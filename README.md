@@ -14,7 +14,7 @@ $ mkdir tracklogs
 $ mkdir configurations
 ```
 
-* 下載部屬檔 https://github.com/flyhead30042/RPA/blob/master/docker-compose.yml 至 Rubus 目錄下
+* 下載部屬檔 https://github.com/flyhead30042/Rubus/blob/master/docker-compose.yml 至 Rubus 目錄下
 * 建立環境變數檔 .env，
 * 複製下列內容至 .env 中
 ```commandline
