@@ -69,3 +69,6 @@ cf358afee478   flyhead/rubus:2023.0.1   "streamlit run app.py"   4 minutes ago  
 * More insight about track points
   * Time difference
   * Speed
+* TWD 97 Grid
+* Export map
+  * 5x7 cells with 4cm length for A4 size
