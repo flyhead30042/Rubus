@@ -6,7 +6,7 @@ import streamlit as st
 from rubus import IMAGES_DIR
 
 st.set_page_config(
-    page_title="streamlit-folium documentation",
+    page_title="App",
     page_icon=":world_map:️",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -14,11 +14,6 @@ st.set_page_config(
 
 st.write("# Welcome to Rubus! 👋")
 
-st.markdown(
-    """
-    This is Rubus project 
-    """
-)
 
 with st.container():
     img = BytesIO()
@@ -27,9 +22,13 @@ with st.container():
 
     st.image(img, caption='Praça Ferreira do Amaral, Macau', width=450)
 
+    with open("README.md", "r", encoding="utf-8") as f:
+        readme = f.read()
+    st.markdown(readme)
+
 with st.sidebar:
     build = os.environ.get("BUILD", "Unknown")
-    st.write(f"build # = {build}")
+    st.write(f"Build No is {build}")
 
 
 
