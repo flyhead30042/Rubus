@@ -31,11 +31,11 @@ services:
 # $ docker-compose -f docker-compose.yml up -d rubus
 ####################
   rubus:
-    image: flyhead/rubus:2023.0.1
+    image: flyhead/rubus:2023.0.2
     ports:
       - "8501:8501"
     environment:
-      - BUILD=flyhead/rubus:2023.0.1
+      - BUILD=flyhead/rubus:2023.0.2
       - PYTHONPATH=/usr/local/src/Rubus
     volumes:
       - rubus_data:/usr/local/src/Rubus
