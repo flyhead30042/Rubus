@@ -21,7 +21,7 @@ $ docker-compose -f docker-compose.yml down
 ```commandline
 $ docker-compose -f docker-compose.yml up -d rubus
 ```
-* 執行下列指令確定 flyhead/rubus images 正確下載，記得要確認 Tag 中的版本編號為最新的版本
+* 執行下列指令確定 flyhead/rubus images 正確下載，記得要確認 Tag 中的版本編號為最新的版本 (flyhead/rubus:2023.0.2)
 ```commandline
 $ docker images --all
 
