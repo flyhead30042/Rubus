@@ -8,6 +8,7 @@ import rubus
 from rubus import search_place, Geogpx, TRACKLOGS_DIR
 from typing import List, AnyStr, Hashable, Any
 import plotly.express as px
+import geopandas as gpd
 
 st.set_page_config(page_title="GPX", page_icon="📈", layout="wide", initial_sidebar_state="expanded")
 # st.markdown("# GPX")
@@ -33,15 +34,16 @@ def mark_wpt(wpt):
 
 def add_tilelayer(tiles: list[dict[AnyStr, Any]]):
     for tls in tiles:
-        folium.raster_layers.TileLayer(
-            tiles=tls["tiles"],
-            name=tls["name"],
-            max_zoom=tls["max_zoom"],
-            subdomains=tls["subdomains"],
-            overlay=tls["overlay"],
-            control=tls["control"],
-            attr=tls["attr"],
-        ).add_to(m)
+        if tls["enabled"]:
+            folium.raster_layers.TileLayer(
+                tiles=tls["tiles"],
+                name=tls["name"],
+                max_zoom=tls["max_zoom"],
+                subdomains=tls["subdomains"],
+                overlay=tls["overlay"],
+                control=tls["control"],
+                attr=tls["attr"],
+            ).add_to(m)
 
 def add_gpxlayer(upload_file: AnyStr | IO[str]):
     geogpx = rubus.load_gpx(upload_file)
@@ -51,6 +53,17 @@ def add_gpxlayer(upload_file: AnyStr | IO[str]):
     folium.vector_layers.PolyLine(locations=trkpt_loc, color="red", weight=2.5, opacity=1).add_to(m)
     geogpx.wpt.apply(mark_wpt, axis="columns")
     return geogpx
+
+
+def add_vectorlayers(vectors: list[dict[AnyStr, Any]]):
+    for vls in vectors:
+        if vls["enabled"]:
+            source = os.path.join(rubus.CONFIGURATIONS_DIR,vls["source"])
+            layer = gpd.read_file(source, encoding='utf-8')
+            folium.GeoJson(
+                data=layer["geometry"],
+                name=vls["name"]
+            ).add_to(m)
 
 def main():
     geogpx: Geogpx = None
@@ -77,12 +90,13 @@ def main():
             geogpx = add_gpxlayer(upload_file)
 
     ###############
-    #  Contaimer  #
+    #  Main win   #
     ###############
     with st.container():
         r = rubus.load_config(os.path.join(rubus.CONFIGURATIONS_DIR, "resource.yaml"))
         # add title layers
         add_tilelayer(r["TileLayers"])
+        add_vectorlayers(r["VectorLayers"])
 
         # add controller
         folium.LayerControl().add_to(m)
