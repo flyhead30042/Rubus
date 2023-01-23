@@ -1,33 +1,13 @@
 # 快速安裝
 
 ## 所需環境
-* 安裝 WSL2， 安裝說明: https://docs.microsoft.com/zh-tw/windows/wsl/install-win10
-* 安裝 Docker Desktop for Windows，安裝說明: https://docs.docker.com/docker-for-windows/install/ (在Docker Desktop安裝後可略過Tutorial)
+* Windows
+  * 安裝 WSL2， 安裝說明: https://docs.microsoft.com/zh-tw/windows/wsl/install-win10
+  * 安裝 Docker Desktop for Windows，安裝說明: https://docs.docker.com/docker-for-windows/install/ (在Docker Desktop安裝後可略過Tutorial)
 
 ## 安裝步驟
-* 建立目錄 Rubus 目錄
-  * 目錄位置可以指向任意本機上喜好路徑
-```commandline
-$ cd C:\Users\<USER_NAME>\AppData\Local
-$ mkdir Rubus
-$ cd Rubus
-$ mkdir tracklogs
-$ mkdir configurations
-```
-
-* 下載部屬檔 https://github.com/flyhead30042/Rubus/blob/master/docker-compose.yml 至 Rubus 目錄下
-* 建立環境變數檔 .env，
-* 複製下列內容至 .env 中
-  * 注意!!! RUBUS_ROOT_DIR 環境變數必須與前一步驟中的 Rubus 目錄相同
-  * RUBUS_HOST_PORT 可以設定本機上任意未使用port
-```commandline
-RUBUS_ROOT_DIR=C:\Users\<USER_NAME>\AppData\Local\Rubus
-RUBUS_TRACKLOGS_DIR=${RUBUS_ROOT_DIR}/tracklogs
-RUBUS_CONFIGURATIONS_DIR=${RUBUS_ROOT_DIR}/configurations
-RUBUS_HOST_PORT=8501
-```
-
-
+* 下載部屬檔 https://github.com/flyhead30042/Rubus/blob/master/docker-compose.yml 至任意目錄下，比如 C:\Users\<USER_NAME>\AppData\local\Rubus
+  
 * 切換到 Rubus 目錄下
 ```commandline
 $ cd C:\Users\<USER_NAME>\AppData\local\Rubus
@@ -55,20 +35,48 @@ $ docker ps --all
 CONTAINER ID   IMAGE                    COMMAND                  CREATED         STATUS         PORTS                    NAMES
 cf358afee478   flyhead/rubus:2023.0.1   "streamlit run app.py"   4 minutes ago   Up 4 minutes   0.0.0.0:8501->8501/tcp   rubus-rubus-1
 ```
+* 打開瀏覽器，開啟下列網址
+```commandline
+http://localhost:8501
+```
 
 # Change Log
+* Build: flyhead/rubus:2023.0.2
+  * app
+    * Import README.md
+  * gpx:
+    * Show TWD97 Grid
+  * Management
+    * New Function
+    * Remove the stored gpx files
+  * Others
+    * Two services in docker-compose.yml for development env. and service env.
+    * Use docker volumes for service env. and loca drive for development respectively 
+    * Simplify installation steps that no need of .env and local folder
+
 * Build: flyhead/rubus:2023.0.1
   * The first build for preview
+  * app
+    * Build No
+  * gpx
+    * Upload gpx files
+    * Store and loaded the uploaded files
+    * Show track and waypoint on selected map
+    * Show the info and chart of track log
+    * Select maps
+    * Full screen mode
+    * Measure distance
+  * dual
+    * Show the maps side by side
+    * Select maps
+    
 
 # Backlog
 * Setup function
-  * Tile layers management: list, add, modify and delete tile resources in resource.yaml  
-  * Stored gpx file management: list and delete gpx files under tracklogs
-* Improve installation guide
+  * Tile layers management: list, add, modify and delete tile resources in resource.yaml
 * Maybe slim the image size?  
 * More insight about track points
   * Time difference
   * Speed
-* TWD 97 Grid
 * Export map
   * 5x7 cells with 4cm length for A4 size
