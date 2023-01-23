@@ -6,6 +6,7 @@ TileLayers:
     overlay: False
     control: True
     attr: 魯地圖
+    enabled: True
   - tiles: "https://wmts.nlsc.gov.tw/wmts/EMAP5/default/EPSG:3857/{z}/{y}/{x}"
     name: 臺灣通用電子地圖
     max_zoom: 19
@@ -13,6 +14,7 @@ TileLayers:
     overlay: False
     control: True
     attr: 臺灣通用電子地圖
+    enabled: True
   - tiles: 'https://gis.sinica.edu.tw/tileserver/file-exists.php?img=TM25K_2003-jpg-{z}-{x}-{y}'
     name: '臺灣經建4版地形圖(2003)'
     max_zoom: 19
@@ -20,20 +22,23 @@ TileLayers:
     overlay: False
     control: True
     attr: '臺灣經建4版地形圖(2003)'
+    enabled: True
   - tiles: 'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
-    attr: 'google'
     name: 'google maps'
     max_zoom: 20
     subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
     overlay: False
     control: True
-  - tiles: 'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}'
     attr: 'google'
+    enabled: True
+  - tiles: 'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}'
     name: 'google street view'
     max_zoom: 20
     subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
     overlay: False
     control: True
+    attr: 'google'
+    enabled: True
   - tiles: 'https://wmts.nlsc.gov.tw/wmts/MOI_CONTOUR_2/default/EPSG:3857/{z}/{y}/{x}'
     name: '等高線圖(2010-2015)'
     max_zoom: 20
@@ -41,6 +46,7 @@ TileLayers:
     overlay: True
     control: True
     attr: '等高線圖(2010-2015)'
+    enabled: True
   - tiles: https://gis.sinica.edu.tw/tileserver/file-exists.php?img=JM20K_1921-jpg-{z}-{x}-{y}
     name: '1921-日治臺灣堡圖(大正版)-1:20,000'
     max_zoom: 21
@@ -48,5 +54,9 @@ TileLayers:
     overlay: False
     control: True
     attr: '1921-日治臺灣堡圖(大正版)-1:20,000'
-
+    enabled: True
+VectorLayers:
+ - source: TWD97_Gridv4.shp
+   name: "TWD97格線"
+   enabled: True
 
