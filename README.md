@@ -6,7 +6,11 @@
   * 安裝 Docker Desktop for Windows，安裝說明: https://docs.docker.com/docker-for-windows/install/ (在Docker Desktop安裝後可略過Tutorial)
 
 ## 安裝步驟
-* 下載部屬檔 https://github.com/flyhead30042/Rubus/blob/master/docker-compose.yml 至任意目錄下，比如 C:\Users\<USER_NAME>\AppData\local\Rubus
+* 下載部屬檔 docker-compose.yml 至任意目錄下，比如 C:\Users\<USER_NAME>\AppData\local\Rubus
+  * Go to https://github.com/flyhead30042/Rubus
+  * Click "docker-compose.yml" to view the contents within the GitHub UI.
+  * In the top right, right click the **Raw** button.
+  * Save as...
   
 * 切換到 Rubus 目錄下
 ```commandline
