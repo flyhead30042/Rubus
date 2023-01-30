@@ -21,4 +21,4 @@ services:
       - .:/usr/local/src/Rubus
       - ${RUBUS_TRACKLOGS_DIR}:/usr/local/src/Rubus/tracklogs
       - ${RUBUS_CONFIGURATIONS_DIR}:/usr/local/src/Rubus/configurations
-    command: "streamlit run app.py"
+    command: "streamlit run app.py --server.headless true --server.fileWatcherType none --browser.gatherUsageStats false"
