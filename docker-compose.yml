@@ -16,7 +16,7 @@ services:
       - PYTHONPATH=/usr/local/src/Rubus
     volumes:
       - rubus_data:/usr/local/src/Rubus
-    command: "streamlit run app.py"
+    command: "streamlit run app.py --server.headless true --server.fileWatcherType none --browser.gatherUsageStats false"
 
 volumes:
   rubus_data:
