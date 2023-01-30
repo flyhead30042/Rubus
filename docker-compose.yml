@@ -2,29 +2,6 @@ version: '3.9'
 services:
 
 ##############################
-# Development Environment
-#  - Build and run
-#  - mount volumes to the local drive
-#  - $ docker-compose -f docker-compose.yml up --build -d rubus-dev
-##############################
-  rubus-dev:
-    build:
-      context: ./
-      dockerfile: ./Dockerfile
-    image: flyhead/rubus:2023.0.2
-    ports:
-      - "8501:8501"
-    environment:
-      - BUILD=flyhead/rubus:2023.0.2
-      - PYTHONPATH=/usr/local/src/Rubus
-    volumes:
-      - .:/usr/local/src/Rubus
-      - ${RUBUS_TRACKLOGS_DIR}:/usr/local/src/Rubus/tracklogs
-      - ${RUBUS_CONFIGURATIONS_DIR}:/usr/local/src/Rubus/configurations
-    command: "streamlit run app.py"
-
-
-##############################
 #  Run container
 #  - Run
 #  - mount volumes "rubus_data" in Docker
@@ -43,4 +20,3 @@ services:
 
 volumes:
   rubus_data:
-
